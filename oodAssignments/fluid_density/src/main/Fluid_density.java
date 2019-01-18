@@ -81,22 +81,11 @@ public class Fluid_density {
     }
 }
 
-/*Assignment 1:  Due January 23rd, 6:00 pm
-
-1. get width height length of the bucket from the user
-2.calculate volume(m3)
-3.calculate the weight of the bucket using fluid density function given
-TO-DO:    4.print a history of the last three bucket calculations and their volume/height totals
-5.allow the user to exit from the program
-
-how to get user input values for height width length?
-scanner and assign those values to each of the variables
+/*Assignment 1:  Due January 23rd, 6:00 pm*
+Assignment 1:  Due January 23rd, 6:00 pm
 
 • Write a java program that helps  model the weight of a square bucket of fluid:
-volume of bucket= length*width*height
-density=mass/volume
-Iterate over the volume and sum the weight values
-Print a history of the last three  bucket calculations and their volume/weight totals
+• Each bucket has a width, length and a height measured in meters
 • The fluid density varies with the height:
 • Cubic Weight based on depth = (1.0 + 0.03 * (meter depth) 2 ) Kg
 • For example, at 3 meters deep, the weight of a cubic meter would be:
@@ -105,16 +94,14 @@ Print a history of the last three  bucket calculations and their volume/weight t
 • Use a switch statement to provide four input options (commands) :
 1) Request the size (i.e. width, length and height) of the bucket measured in meters
 2) Calculate the  cubic volume (m 3 ) of the bucket
-3) Calculate the weight of the bucket contents using the fluid density function shown above  – Note: Do not use Calculus  –
+3) Calculate the weight of the bucket contents using the fluid density function shown above  – Note: Do not use Calculus  – Iterate over the volume and sum the weight values
 4) Print a history of the last three  bucket calculations and their volume/weight totals
 5) Quit – Allow the user to exit from the program
-
-try different things
 • You may use the sample starter code (CSYE6200Assign1.java) which is attached to the Blackboard assignment page.
 • Submit your source code to Blackboard. Please fill in your name and NUID number
+
 package assign1;
 
-I am taking a leave of absence or i am going to learn web dev web design and AED finish this off i shall learn how to write code
 /**
  * A starter file for implementing CSYE 6200 Assignment 1 <br>
  * Note: the package is 'assign1' so your code should be in your source folder under 'assign1'
@@ -124,7 +111,11 @@ I am taking a leave of absence or i am going to learn web dev web design and AED
  *
  * NUID: (your ID here) <br>
  * @author (your name here)
+
 class CSYE6200Assign1 {
+
+
+      Your program starts with this method call
 
     public static void main(String args[]) throws java.io.IOException {
         // Create an instance of the class, and call the constructor method
@@ -137,6 +128,8 @@ class CSYE6200Assign1 {
 
     //double sqrValue; // Uncomment to use with the method example shown below
 
+    /**
+     * Assign1 Constructor
 
     public CSYE6200Assign1() {
         // After a 'new' call the constructor is executed first - for now, nothing happens
@@ -147,9 +140,53 @@ class CSYE6200Assign1 {
         //sqrValue = calcTheSquare(27.3); // Calculate the value of 27.3 * 27.3;
     }
 
+    /**
+     * Perform all of the user operations
+
+    public void run() throws java.io.IOException {
+        char inChar = ' ';
+
+
+        System.out.println("Enter choice (1,2,3), or \'q\' to quit, then press <enter>.");
+        do {
+            inChar = (char) System.in.read();
+            if (inChar == '\n') continue; // Skip a (newline) character
+            if (inChar == '\r') continue; // Skip a (carriage return) character
+            // react to input and take appropriate action
+
+            switch (inChar) {
+                case '1':
+                    System.out.println("You selected option 1");
+                    break;
+                case '2':
+                    System.out.println("You selected option 2");
+                    break;
+                case '3':
+                    System.out.println("You selected option 3");
+                    break;
+                default:
+                    System.out.println("Invalid selection: " + inChar);
+                    break;
+                case 'q':
+                    break;
+            }
+
+
+        }
+        while (inChar != 'q'); // Exit on quit
+        System.out.println("Quiting...");
+    }
+
+
+    /**
+     * An example of a method call
+     * @param a real value that should be squared
+     * @return a squared value (i.e. value^2)
+
     public double calcTheSquare(double value) {
         double sqr = value * value;
-    return sqr;
+
+        return sqr;
     }
-}
-*/
+}/
+ */
