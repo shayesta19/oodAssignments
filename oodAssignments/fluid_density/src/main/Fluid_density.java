@@ -1,192 +1,159 @@
 package main;
 
+/*
+name :shayesta parveen reehan
+NUID: 001401028
+ */
+import main.Bucket;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Fluid_density {
-    public static void main(String[] args) {
-        Bucket b = new Bucket();
-        //getting the user inputs for height width length
-        //printing out the three latest values of volume/height calculations
-        // points 3 and 4
-        //make the switch cases more reader friendly
+    private static final String ENTER_BUCKET_DIMENSIONS = "Enter bucket dimensions";
+    private static final String CALCULATE_CUBIC_VOLUME = "Calculate cubic volume";
+    private static final String CALCULATE_CUBIC_WEIGHT = "Calculate cubic weight";
+    private static final String PRINT_HISTORY = "Print history";
+    private static final String EXIT = "Exit";
 
-        public void run () throws IOException {
-            char input;
-            System.out.println("enter choice (1,2,3,4), or \'q\' to quit, then press <enter>");
-            do {
-                input = (char) System.in.read();
-                if (input == '\n') continue;
-                if (input == '\r') continue;
-                switch (input) {
-                    case '1': //request size height width length
-                        System.out.println("you selected option 1");
-                        userInput();
-                        break;
-                    case '2': //calculate cubic volume
-                        System.out.println("you selected option 2");
-                        volume();
-                        break;
-                    case '3': //calculate contents of the bucket using fluid density function
-                        System.out.println("you selected option 3");
-                        density(); //Iterate over the volume and sum the weight values
-                        break;
-                    case '4':
-                        System.out.println("you selected option 4");
-                        for (int i = 0; i <= 3; i++) {
-                            //Print a history of the last three  bucket calculations
-                            //print volume/weight calculations
-                        }
-                        break;
-                    default:
-                        System.out.println("you selected an invalid option" + input);
-                        break;
-                    case 'q':
-                        break;
-                }
-            }
-            while (input != 'q');
-            {
-                System.out.println("Quitting...");
-            }
-        }
-        public static double weight () {
-            double weight = (1.0 + 0.03 * Math.pow(b.getHeight(), 2));
-            return weight;
-        }
-        private static void density () {
-            double density = volume() / weight();
-        }
+    private static Bucket bucket = new Bucket();
+    private static Stack<Double> weights = new Stack<>();
+    private static Stack<Double> volumes = new Stack<>();
 
-        private static double volume () {
-            double volume = b.getHeight() * b.getLength() * b.getWidth();
-            return volume;
-        }
+    public static void main(String[] args) throws IOException {
 
-        private static void userInput () {
-            Scanner inp = new Scanner(System.in);
-            do {
-                System.out.println("enter value for width");
-                b.setWidth(inp.nextDouble());
-                System.out.println("enter value for height");
-                b.setHeight(inp.nextDouble());
-                System.out.println("enter value for length");
-                b.setLength(inp.nextDouble());
-            } while (); {
-
-            }
-
-
+        while (true) {
+            menu();
+            System.out.println("enter choice (1,2,3,4), or \'q\' to quit, then press <enter>:");
+            run();
         }
     }
-}
 
-/*Assignment 1:  Due January 23rd, 6:00 pm*
-Assignment 1:  Due January 23rd, 6:00 pm
-
-• Write a java program that helps  model the weight of a square bucket of fluid:
-• Each bucket has a width, length and a height measured in meters
-• The fluid density varies with the height:
-• Cubic Weight based on depth = (1.0 + 0.03 * (meter depth) 2 ) Kg
-• For example, at 3 meters deep, the weight of a cubic meter would be:
-• W(3m) = 1.0 + (0.03) * (3m) 2 = 1.27 Kg
-• Use a loop to accept keyboard command input
-• Use a switch statement to provide four input options (commands) :
-1) Request the size (i.e. width, length and height) of the bucket measured in meters
-2) Calculate the  cubic volume (m 3 ) of the bucket
-3) Calculate the weight of the bucket contents using the fluid density function shown above  – Note: Do not use Calculus  – Iterate over the volume and sum the weight values
-4) Print a history of the last three  bucket calculations and their volume/weight totals
-5) Quit – Allow the user to exit from the program
-• You may use the sample starter code (CSYE6200Assign1.java) which is attached to the Blackboard assignment page.
-• Submit your source code to Blackboard. Please fill in your name and NUID number
-
-package assign1;
-
-/**
- * A starter file for implementing CSYE 6200 Assignment 1 <br>
- * Note: the package is 'assign1' so your code should be in your source folder under 'assign1'
- * [i.e. (your workspace path)\src\assign1\CSYE6200Assign1.java]
- *
- * Filename: CSYE6200Assign1.java <br>
- *
- * NUID: (your ID here) <br>
- * @author (your name here)
-
-class CSYE6200Assign1 {
-
-
-      Your program starts with this method call
-
-    public static void main(String args[]) throws java.io.IOException {
-        // Create an instance of the class, and call the constructor method
-        CSYE6200Assign1 prog1 = new CSYE6200Assign1();
-
-        prog1.run(); // call the run method - your program executes in this method
-
-        // We're done. The program will exit.
-    }
-
-    //double sqrValue; // Uncomment to use with the method example shown below
-
-    /**
-     * Assign1 Constructor
-
-    public CSYE6200Assign1() {
-        // After a 'new' call the constructor is executed first - for now, nothing happens
-        // If you had variables to create, or needed to initialize arrays, you should do
-        //   those functions here.
-
-        // Uncomment to show a variable initialization using a method call. Uncomment the variable definition above as well.
-        //sqrValue = calcTheSquare(27.3); // Calculate the value of 27.3 * 27.3;
-    }
-
-    /**
-     * Perform all of the user operations
-
-    public void run() throws java.io.IOException {
-        char inChar = ' ';
-
-
-        System.out.println("Enter choice (1,2,3), or \'q\' to quit, then press <enter>.");
+    public static void run() throws IOException {
+        char input = getInput();
         do {
-            inChar = (char) System.in.read();
-            if (inChar == '\n') continue; // Skip a (newline) character
-            if (inChar == '\r') continue; // Skip a (carriage return) character
-            // react to input and take appropriate action
-
-            switch (inChar) {
-                case '1':
-                    System.out.println("You selected option 1");
-                    break;
-                case '2':
-                    System.out.println("You selected option 2");
-                    break;
-                case '3':
-                    System.out.println("You selected option 3");
-                    break;
+            switch (input) {
+                case '1': { //request size height width length
+                    System.out.println("You selected " + ENTER_BUCKET_DIMENSIONS);
+                    userInput();
+                    return;
+                }
+                case '2': {//calculate cubic volume
+                    System.out.println("You selected " + CALCULATE_CUBIC_VOLUME);
+                    double volume = volume(computeHeightOfWater());
+                    volumes.push(volume);
+                    System.out.println("volume = " + volume);
+                    return;
+                }
+                case '3': { //calculate contents of the bucket using fluid density function
+                    System.out.println("You selected " + CALCULATE_CUBIC_WEIGHT);
+                    double weight = weight();//Iterate over the volume and sum the weight values
+                    weights.push(weight);
+                    System.out.println("weight = " + weight);
+                    return;
+                }
+                case '4': {
+                    System.out.println("You selected " + PRINT_HISTORY);
+                    lastThree(weights, "Weight #");
+                    lastThree(volumes, "Volume #");
+                    return;
+                }
                 default:
-                    System.out.println("Invalid selection: " + inChar);
-                    break;
+                    System.out.println("you selected an invalid option" + input);
+                    return;
                 case 'q':
                     break;
             }
-
-
         }
-        while (inChar != 'q'); // Exit on quit
-        System.out.println("Quiting...");
+        while (input != 'q');
+        {
+            System.out.println("Quitting...");
+            System.exit(0);
+        }
     }
 
-
-    /**
-     * An example of a method call
-     * @param a real value that should be squared
-     * @return a squared value (i.e. value^2)
-
-    public double calcTheSquare(double value) {
-        double sqr = value * value;
-
-        return sqr;
+    private static List<Double> lastThree(Stack<Double> elements, String prefix) {
+        List<Double> lastThree = new ArrayList<>();
+        int size = elements.size();
+        if (size < 3) {
+            for (int i = 0; i < size; i++) {
+                lastThree.add(elements.pop());
+            }
+        } else {
+            for (int i = 0; i < 3; i++) {
+                lastThree.add(elements.pop());
+            }
+        }
+        int index = 1;
+        for (int i = lastThree.size() - 1; i >= 0; i--) {
+            System.out.print(prefix + index++ + ": ");
+            Double element = lastThree.get(i);
+            System.out.println(element);
+            elements.push(element);
+        }
+        return lastThree;
     }
-}/
- */
+
+    private static char getInput() throws IOException {
+        char input;
+        input = (char) System.in.read();
+        while (input == '\n' || input == '\r') {
+            input = (char) System.in.read();
+        }
+        return input;
+    }
+
+    private static void menu() {
+        System.out.println();
+        System.out.println("1. " + ENTER_BUCKET_DIMENSIONS);
+        System.out.println("2. " + CALCULATE_CUBIC_VOLUME);
+        System.out.println("3. " + CALCULATE_CUBIC_WEIGHT);
+        System.out.println("4. " + PRINT_HISTORY);
+        System.out.println("q. " + EXIT);
+    }
+
+    public static double weight() {
+        double fractionDepth = computeHeightOfWater() % 1;
+        double weight = density(fractionDepth) * volume(fractionDepth);
+        int depth = (int) computeHeightOfWater();
+        for (int i = 1; i <=depth; i++) {//going in one meter steps and summing the weight
+            weight = weight + density(i + fractionDepth) * volume(1);
+        }
+        return weight;
+    }
+
+    private static double density(double depth) {
+        return (1.0 + 0.03 * Math.pow(depth, 2));
+    }
+
+    private static double volume(double depth) {
+        return depth * bucket.getLength() * bucket.getWidth();
+    }
+
+    private static double computeHeightOfWater() {
+        return bucket.getDepth() == bucket.getHeight() ? bucket.getDepth() : bucket.getHeight() - bucket.getDepth();
+    }
+
+    private static void userInput() {
+        Scanner inp = new Scanner(System.in);
+        System.out.println("enter value for width");
+        bucket.setWidth(inp.nextDouble());
+        System.out.println("enter value for length");
+        bucket.setLength(inp.nextDouble());
+        System.out.println("enter value for height");
+        bucket.setHeight(inp.nextDouble());
+        System.out.println("enter value for depth (less than or equal to height)");
+        double depthInput = inp.nextDouble();
+        while (depthInput > bucket.getHeight()) {
+            System.out.println("enter value for depth (less than or equal to height)");
+            depthInput = inp.nextDouble();
+        }
+        bucket.setDepth(depthInput);
+    }
+
+}
+
+
