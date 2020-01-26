@@ -143,16 +143,18 @@ public class RemoteControlledRobot {
 				j++;
 				pathCost.push(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
-			}
+			}else break;
+		}for(int i=0,j=y;i<grid.length&&j<grid[0].length;) {
 			if (i <= x && j == y) {
 				i++;
 				pathCost.push(grid[j][i]);
 				path.push("the coordinates are " + i + " " + j);
 			} else
-				break;
+		break;
 		}
-		//System.out.println("the path cost is " + costIncurred());
-		// System.out.println("the last three coordinates are " + printHistory());
+		System.out.println("the path cost is " + costIncurred(pathCost));
+		 System.out.println("the last three coordinates are ");
+		 printHistory();
 	}
 
 	public static void YTraversal() {
@@ -163,7 +165,9 @@ public class RemoteControlledRobot {
 				i++;
 				pathCost.push(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
-			}
+			}else break;
+		}
+			for(int i=x,j=0;i<grid.length&&j<grid[0].length;) {
 			if (j <= y && i == x) {
 				j++;
 				pathCost.push(grid[i][j]);
@@ -172,7 +176,8 @@ public class RemoteControlledRobot {
 				break;
 		}
 		System.out.println("the path cost is "+costIncurred(pathCost));
-		System.out.println("the last three coordinates are "+printHistory());
+		System.out.println("the last three coordinates are ");
+		printHistory();
 	}
 
 	public static void diagonalPath() {
@@ -196,8 +201,9 @@ public class RemoteControlledRobot {
 			} else
 				break;
 		}
-		System.out.println("the path cost is "+costIncurred());
-		System.out.print("the last three coordinates are " +printHistory());
+		System.out.println("the path cost is "+costIncurred(pathCost));
+		System.out.print("the last three coordinates are " );
+		printHistory();
 
 	}
 
@@ -277,7 +283,7 @@ public class RemoteControlledRobot {
 		return sum;
 	}
 
-	public static List<String> printHistory() {
+	public static void printHistory() {
 		List<String> lastThree = new ArrayList<>();
 		int size = path.size();
 		if (size < 3) {
@@ -296,7 +302,7 @@ public class RemoteControlledRobot {
 			System.out.println(paths);
 			
 		}
-		return lastThree;
+		
 	}
 }
 
