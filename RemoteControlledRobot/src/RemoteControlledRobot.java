@@ -15,6 +15,7 @@ public class RemoteControlledRobot {
     static Stack<String> path = new Stack<>();
     static Queue<Integer> pathCostTempX = new LinkedList<>();
     static Queue<Integer> pathCostTempY = new LinkedList<>();
+    static Queue<Integer> pathCostTempDiagonal=new LinkedList<>();
     static int[] targetInput = new int[2];
     public static int[][] grid = {
             {1, 3, 4, 6, 9, 7, 5, 2},
@@ -133,6 +134,7 @@ public class RemoteControlledRobot {
     }
 
     public static void XTraversal() {
+        pathCost.clear();
         int x = targetInput[0];
         int y = targetInput[1];
         for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
@@ -153,6 +155,7 @@ public class RemoteControlledRobot {
     }
 
     public static void YTraversal() {
+        pathCost.clear();
         int x = targetInput[0];
         int y = targetInput[1];
         for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
@@ -174,9 +177,11 @@ public class RemoteControlledRobot {
     }
 
     public static void diagonalPath() {
+        pathCost.clear();
         int x = targetInput[0];
         int y = targetInput[1];
-        for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
+        int i=0,j=0;
+        for ( i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
             if (i <= x && j <= y) {
                 pathCost.add(grid[i][j]);
                 path.push("the coordinates are " + i + " " + j);
@@ -184,21 +189,24 @@ public class RemoteControlledRobot {
                 j++;
             } else break;
         }
-        for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
-            if (i == x && j <= y) {
-                pathCost.add(grid[i][j]);
-                path.push("the coordinates are " + i + " " + j);
-                j++;
-            } else if (i <= x && j == y) {
-                pathCost.add(grid[i][j]);
-                path.push("the coordinates are " + i + " " + j);
-                i++;
-            } else
-                break;
+            for (int row = i-1, col = j-1; row < grid.length && col < grid[0].length; ) {
+
+                if (row == x && col < y) {
+                    col++;
+                    pathCost.add(grid[row][col]);
+                    path.push("the coordinates are " + row + " " + col);
+                } else if (row < x && col == y) {
+                    row++;
+                    pathCost.add(grid[row][col]);
+                    path.push("the coordinates are " + row + " " + col);
+                } else
+                    break;
+            }
         }
-    }
+
 
     private static void xTraversalCost() {
+        pathCostTempX.clear();
         int x = targetInput[0];
         int y = targetInput[1];
         for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
@@ -221,6 +229,7 @@ public class RemoteControlledRobot {
     }
 
     private static void yTraversalCost() {
+        pathCostTempY.clear();
         int x = targetInput[0];
         int y = targetInput[1];
         for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
@@ -244,20 +253,29 @@ public class RemoteControlledRobot {
     }
 
     private static void diagonalPathCost() {
+        pathCostTempDiagonal.clear();
         int x = targetInput[0];
         int y = targetInput[1];
-        int pathCost = 0;
-        for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
+        int i=0,j=0;
+        for ( i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
             if (i <= x && j <= y) {
+                pathCostTempDiagonal.add(grid[i][j]);
                 i++;
                 j++;
-                int diagonal = grid[i][j];
-                System.out.print(diagonal + " ");
-                pathCost += grid[i][j];
+            } else break;
+        }
+        for (int row = i-1, col = j-1; row < grid.length && col < grid[0].length; ) {
+
+            if (row == x && col < y) {
+                col++;
+                pathCostTempDiagonal.add(grid[row][col]);
+            } else if (row < x && col == y) {
+                row++;
+                pathCostTempDiagonal.add(grid[row][col]);
             } else
                 break;
         }
-        System.out.println("the cost for this path option is: " + pathCost);
+        System.out.println("the cost for this path option is: " + costIncurred(pathCostTempDiagonal));
     }
 
     public static int costIncurred(Queue<Integer> pathCost) {
