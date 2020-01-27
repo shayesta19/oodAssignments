@@ -1,9 +1,6 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.Scanner;
-import java.util.Scanner;
-import java.util.Stack;
 
 /*
  * Name: Shayesta Parveen Reehan
@@ -14,15 +11,15 @@ public class RemoteControlledRobot {
 	static Scanner in = new Scanner(System.in);
 	static int X;
 	static int Y;
-	static Stack<Integer> pathCost = new Stack<>();
+	static Queue<Integer> pathCost = new LinkedList<>();
 	static Stack<String> path = new Stack<>();
-	static Stack<Integer> pathCostTempX = new Stack<>();
-	static Stack<Integer> pathCostTempY = new Stack<>();
+	static Queue<Integer> pathCostTempX = new LinkedList<>();
+	static Queue<Integer> pathCostTempY = new LinkedList<>();
 	static int[] targetInput = new int[2];
 	public static int[][] grid = { 
 			{ 1, 3, 4, 6, 9, 7, 5, 2 }, 
 			{ 3, 5, 8, 4, 1, 9, 7, 2 }, 
-			{ 2, 5, 8, 9, 2, 1, 7, 6 },
+			{ 2, 5, 7, 9, 2, 1, 7, 6 },
 			{ 5, 3, 2, 1, 7, 1, 8, 9 }, 
 			{ 4, 9, 7, 6, 3, 2, 5, 1 }, 
 			{ 9, 1, 5, 8, 1, 7, 3, 2 },
@@ -140,15 +137,15 @@ public class RemoteControlledRobot {
 		int y = targetInput[1];
 		for (int i = 0, j = 0; i < grid.length && j < grid[0].length;) {
 			if (j <= y && i == 0) {
-				j++;
-				pathCost.push(grid[i][j]);
+				pathCost.add(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
+				++j;
 			}else break;
 		}for(int i=0,j=y;i<grid.length&&j<grid[0].length;) {
 			if (i <= x && j == y) {
-				i++;
-				pathCost.push(grid[j][i]);
+				pathCost.add(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
+				++i;
 			} else
 		break;
 		}
@@ -161,17 +158,18 @@ public class RemoteControlledRobot {
 		int x = targetInput[0];
 		int y = targetInput[1];
 		for (int i = 0, j = 0; i < grid.length && j < grid[0].length;) {
-			if (i <= x && j == 0) {
-				i++;
-				pathCost.push(grid[i][j]);
+			if (i <=x && j == 0) {
+				pathCost.add(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
+				i++;
+
 			}else break;
 		}
 			for(int i=x,j=0;i<grid.length&&j<grid[0].length;) {
-			if (j <= y && i == x) {
-				j++;
-				pathCost.push(grid[i][j]);
+			if (j <=y && i == x) {
+				pathCost.add(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
+				j++;
 			} else
 				break;
 		}
@@ -187,16 +185,16 @@ public class RemoteControlledRobot {
 			if (i <= x && j <= y) {
 				i++;
 				j++;
-				pathCost.push(grid[i][j]);
+				pathCost.add(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
 			}
 			if (i == x && j <= y) {
 				j++;
-				pathCost.push(grid[i][j]);
+				pathCost.add(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
 			} else if (i <= x && j == y) {
 				i++;
-				pathCost.push(grid[i][j]);
+				pathCost.add(grid[i][j]);
 				path.push("the coordinates are " + i + " " + j);
 			} else
 				break;
@@ -211,20 +209,20 @@ public class RemoteControlledRobot {
 		int x = targetInput[0];
 		int y = targetInput[1];
 		for (int i = 0, j = 0; i < grid.length && j < grid[0].length;) {
-			if (j <= y && i == 0) {
+			if (j < y && i == 0) {
+				pathCostTempX.add(grid[i][j]);
 				j++;
 //				int xdirection = grid[i][j];
 //				System.out.println(xdirection + " ");
-				pathCostTempX.push(grid[i][j]);
 			}else
 				break;
 		}
 		for(int i=0,j=y;i<grid.length&&j<grid[0].length;) {
-			if (i <= x && j == y) {
+			if (i < x && j == y) {
+				pathCostTempX.add(grid[i][j]);
 				i++;
 //				int ydirection = grid[j][i];
 //				System.out.print(ydirection + " ");
-				pathCostTempX.push(grid[j][i]);
 			} else
 				break;
 		}
@@ -236,21 +234,21 @@ public class RemoteControlledRobot {
 		int x = targetInput[0];
 		int y = targetInput[1];
 		for (int i = 0, j = 0; i < grid.length && j < grid[0].length;) {
-			if (i <= x && j == 0) {
+			if (i < x && j == 0) {
+				pathCostTempY.add(grid[i][j]);
 				i++;
 //				int ydirection = grid[j][i];
 //				System.out.print(ydirection + " ");
-				pathCostTempY.push(grid[j][i]);
 				// pathCost += grid[i][j];
 			}else break;
 		}
 			for(int i=x,j=0;i<grid.length&&j<grid[0].length;) {
-				if (j <= y && i == x) {
+				if (j < y && i == x) {
+					pathCostTempY.add(grid[i][j]);
 					j++;
 //					int xdirection = grid[i][j];
 //					System.out.println(xdirection + " ");
 					// pathCost += grid[i][j];
-					pathCostTempY.push(grid[i][j]);
 			}else
 				break;
 		}
@@ -275,9 +273,9 @@ public class RemoteControlledRobot {
 		System.out.println("the cost for this path option is: " + pathCost);
 	}
 
-	public static int costIncurred(Stack<Integer>pathCost) {
+	public static int costIncurred(Queue<Integer>pathCost) {
 		int sum = 0;
-		for (int i : pathCost) {
+		for (int i=0;i<pathCost.size();i++) {
 			sum += i;
 		}
 		return sum;
@@ -305,12 +303,12 @@ public class RemoteControlledRobot {
 		
 	}
 }
-
-
-
 /*
  * 
- * looping input move from one set of coordinates to another. add comments fix
- * printHistory fix cost incurred fix traversals
+ * looping input move from one set of coordinates to another. 
+ * add comments 
+ * fix printHistory 
+ * fix cost incurred 
+ * fix traversals
  * 
  */
