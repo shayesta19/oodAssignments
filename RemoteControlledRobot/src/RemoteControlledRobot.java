@@ -20,6 +20,7 @@ public class RemoteControlledRobot {
     static Queue<Integer> pathCostTempDiagonal = new LinkedList<>();
     static LinkedList<Integer> inputHistory=new LinkedList<>();
     static int[] targetInput = new int[2];
+    static int iterationCounter=0;
 
     public static int[][] grid = {
             {1, 3, 4, 6, 9, 7, 5, 2},
@@ -46,6 +47,7 @@ public class RemoteControlledRobot {
                         targetInput();
                         inputHistory.add(targetInput[0]);
                         inputHistory.add(targetInput[1]);
+                        iterationCounter++;
                         break;
                     }
                     case '2': {
@@ -145,11 +147,7 @@ public class RemoteControlledRobot {
      * then increments the row values keeping column values constant until the (x,y) index is reached
      **/
     public static void XTraversal() {
-        tempY = inputHistory.getLast();
-        tempX = inputHistory.getLast();
-        int loopy=inputHistory.getFirst();
-        int loopx=inputHistory.getFirst();
-        if (X == targetInput[0] && Y == targetInput[1]&&(tempY!=loopy&&tempX!=loopx)) {
+        if(iterationCounter<=1){
             for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
                 if (j <= Y && i == 0) {
                     pathCost.add(grid[i][j]);
@@ -165,27 +163,29 @@ public class RemoteControlledRobot {
                 } else
                     break;
             }
-        }
-       else if (tempX < targetInput[0] && tempY < targetInput[1]) {
-            pathCost.clear();
-            for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
-                if (j <= Y && i == 0) {
-                    pathCost.add(grid[i][j]);
-                    path.push("the coordinates are " + i + " " + j);
-                    j++;
-                } else break;
+        }else {
+            if(tempX < targetInput[0] && tempY < targetInput[1]) {
+                for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
+                    if (j <= Y && i == 0) {
+                        pathCost.add(grid[i][j]);
+                        path.push("the coordinates are " + i + " " + j);
+                        j++;
+                    } else break;
+                }
+                for (int i = 1, j = Y; i < grid.length && j < grid[0].length; ) {
+                    if (i <= X && j == Y) {
+                        pathCost.add(grid[i][j]);
+                        path.push("the coordinates are " + i + " " + j);
+                        i++;
+                    } else break;
+                }
             }
-            for (int i = 1, j = Y; i < grid.length && j < grid[0].length; ) {
-                if (i <= X && j == Y) {
-                    pathCost.add(grid[i][j]);
-                    path.push("the coordinates are " + i + " " + j);
-                    i++;
-                } else break;
+                else{
+                    tempY=inputHistory.pollLast();
+                    tempX=inputHistory.pollLast();
+                    xTraversalLoop(tempX,tempY);
+                }
             }
-        }else if(tempX==targetInput[0]&&tempY==targetInput[1]){
-                xTraversalLoop(tempX,tempY);
-            }
-
         }
     /**
      * increments row values first keeping column values constant until the (x,0)index is reached
