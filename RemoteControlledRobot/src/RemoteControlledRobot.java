@@ -15,7 +15,7 @@ public class RemoteControlledRobot {
     static Stack<String> path = new Stack<>();
     static Queue<Integer> pathCostTempX = new LinkedList<>();
     static Queue<Integer> pathCostTempY = new LinkedList<>();
-    static Queue<Integer> pathCostTempDiagonal=new LinkedList<>();
+    static Queue<Integer> pathCostTempDiagonal = new LinkedList<>();
     static int[] targetInput = new int[2];
     public static int[][] grid = {
             {1, 3, 4, 6, 9, 7, 5, 2},
@@ -133,6 +133,10 @@ public class RemoteControlledRobot {
         return targetInput;
     }
 
+    /**
+     * increments column values first keeping row values constant until the (0,y)index is reached
+     * then increments the row values keeping column values contant until the (x,y) index is reached
+     **/
     public static void XTraversal() {
         pathCost.clear();
         int x = targetInput[0];
@@ -153,6 +157,11 @@ public class RemoteControlledRobot {
                 break;
         }
     }
+
+    /**
+     * increments row values first keeping column values constant until the (x,0)index is reached
+     * then increments the column values keeping row values contant until the (x,y) index is reached
+     **/
 
     public static void YTraversal() {
         pathCost.clear();
@@ -176,12 +185,16 @@ public class RemoteControlledRobot {
         }
     }
 
+    /**
+     * increments both row and column indices until both are equal and then checks if either one of them is less than the
+     * target value then increments that corresponding row/column index until (x,y) index is reached
+     **/
     public static void diagonalPath() {
         pathCost.clear();
         int x = targetInput[0];
         int y = targetInput[1];
-        int i=0,j=0;
-        for ( i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
+        int i = 0, j = 0;
+        for (i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
             if (i <= x && j <= y) {
                 pathCost.add(grid[i][j]);
                 path.push("the coordinates are " + i + " " + j);
@@ -189,22 +202,24 @@ public class RemoteControlledRobot {
                 j++;
             } else break;
         }
-            for (int row = i-1, col = j-1; row < grid.length && col < grid[0].length; ) {
+        for (int row = i - 1, col = j - 1; row < grid.length && col < grid[0].length; ) {
 
-                if (row == x && col < y) {
-                    col++;
-                    pathCost.add(grid[row][col]);
-                    path.push("the coordinates are " + row + " " + col);
-                } else if (row < x && col == y) {
-                    row++;
-                    pathCost.add(grid[row][col]);
-                    path.push("the coordinates are " + row + " " + col);
-                } else
-                    break;
-            }
+            if (row == x && col < y) {
+                col++;
+                pathCost.add(grid[row][col]);
+                path.push("the coordinates are " + row + " " + col);
+            } else if (row < x && col == y) {
+                row++;
+                pathCost.add(grid[row][col]);
+                path.push("the coordinates are " + row + " " + col);
+            } else
+                break;
         }
+    }
 
-
+    /**
+     * helper function that calculates the cost of choosing XTraversal path option
+     **/
     private static void xTraversalCost() {
         pathCostTempX.clear();
         int x = targetInput[0];
@@ -228,6 +243,9 @@ public class RemoteControlledRobot {
 
     }
 
+    /**
+     * helper function that calculates the cost of choosing YTraversal path option
+     **/
     private static void yTraversalCost() {
         pathCostTempY.clear();
         int x = targetInput[0];
@@ -252,19 +270,22 @@ public class RemoteControlledRobot {
 
     }
 
+    /**
+     * helper function that calculates the cost of choosing diagonal Traversal path option
+     **/
     private static void diagonalPathCost() {
         pathCostTempDiagonal.clear();
         int x = targetInput[0];
         int y = targetInput[1];
-        int i=0,j=0;
-        for ( i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
+        int i = 0, j = 0;
+        for (i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
             if (i <= x && j <= y) {
                 pathCostTempDiagonal.add(grid[i][j]);
                 i++;
                 j++;
             } else break;
         }
-        for (int row = i-1, col = j-1; row < grid.length && col < grid[0].length; ) {
+        for (int row = i - 1, col = j - 1; row < grid.length && col < grid[0].length; ) {
 
             if (row == x && col < y) {
                 col++;
@@ -286,6 +307,10 @@ public class RemoteControlledRobot {
         return sum;
     }
 
+    /**
+     * prints the history of the last three indices traversed by popping the
+     * top three elements stored in the stack.
+     **/
     public static void printHistory() {
         List<String> lastThree = new ArrayList<>();
         int size = path.size();
@@ -300,7 +325,7 @@ public class RemoteControlledRobot {
         }
         int index = 1;
         for (int i = lastThree.size() - 1; i >= 0; i--) {
-            System.out.println(index++ + ": ");
+            System.out.print(index++ + ": ");
             String paths = lastThree.get(i);
             System.out.println(paths);
 
@@ -308,12 +333,4 @@ public class RemoteControlledRobot {
 
     }
 }
-/*
- *
- * looping input move from one set of coordinates to another.
- * add comments
- * fix printHistory
- * fix cost incurred
- * fix traversals
- *
- */
+
