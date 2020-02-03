@@ -47,7 +47,6 @@ public class RemoteControlledRobot {
                         targetInput();
                         inputHistory.add(targetInput[0]);
                         inputHistory.add(targetInput[1]);
-                        iterationCounter++;
                         break;
                     }
                     case '2': {
@@ -140,6 +139,7 @@ public class RemoteControlledRobot {
         System.out.println("enter a y value less than 8");
         targetInput[1] = in.nextInt();
         Y=targetInput[1];
+        iterationCounter++;
         return targetInput;
     }
     /**
@@ -164,20 +164,24 @@ public class RemoteControlledRobot {
                     break;
             }
         }else {
-            if(tempX < targetInput[0] && tempY < targetInput[1]) {
+            if (tempX < targetInput[0] && tempY < targetInput[1]) {
+                pathCost.clear();
+                int x = targetInput[0];
+                int y = targetInput[1];
                 for (int i = 0, j = 0; i < grid.length && j < grid[0].length; ) {
-                    if (j <= Y && i == 0) {
+                    if (j <= y && i == 0) {
                         pathCost.add(grid[i][j]);
                         path.push("the coordinates are " + i + " " + j);
                         j++;
                     } else break;
                 }
-                for (int i = 1, j = Y; i < grid.length && j < grid[0].length; ) {
-                    if (i <= X && j == Y) {
+                for (int i = 1, j = y; i < grid.length && j < grid[0].length; ) {
+                    if (i <= x && j == y) {
                         pathCost.add(grid[i][j]);
                         path.push("the coordinates are " + i + " " + j);
                         i++;
-                    } else break;
+                    } else
+                        break;
                 }
             }
                 else{
