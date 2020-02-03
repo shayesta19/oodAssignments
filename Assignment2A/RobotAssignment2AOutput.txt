@@ -1,0 +1,80 @@
+enter an even number greater than 2 for grid size
+Grid@6d6f6e28enter a boundary value
+[[D@135fbaa4
+Name : robot 1 || Manufacturer:  NVIDIA || Weight: 2.00 kgs || XPosition: 10 moving at 180 degrees || YPosition: 8 moving at 90 degrees || speed:  5 meters/second || Engine Power Draw: 6.83 mA || Battery Capacity: 24.00 mA-Hour 
+Name : robot 2 || Manufacturer:  Intel || Weight: 2.50 kgs || XPosition: 9 moving at 180 degrees || YPosition: 9 moving at 90 degrees || speed: 10 meters/second || Engine Power Draw: 8.87 mA || Battery Capacity: 15.00 mA-Hour 
+Name : robot 3 || Manufacturer:    AMD || Weight: 3.00 kgs || XPosition: 5 moving at 45 degrees || YPosition: 4 moving at 90 degrees || speed: 11 meters/second || Engine Power Draw: 6.62 mA || Battery Capacity: 18.20 mA-Hour 
+Name : robot 4 || Manufacturer:   fuji || Weight: 3.20 kgs || XPosition: 3 moving at 180 degrees || YPosition: 2 moving at 90 degrees || speed: 20 meters/second || Engine Power Draw: 7.82 mA || Battery Capacity: 14.00 mA-Hour 
+Name : robot 5 || Manufacturer:  mitsubishi || Weight: 3.00 kgs || XPosition: 7 moving at 45 degrees || YPosition: 7 moving at 45 degrees || speed: 15 meters/second || Engine Power Draw: 10.48 mA || Battery Capacity: 17.00 mA-Hour 
+
+
+"C:\Program Files\Java\jdk1.8.0_231\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3\lib\idea_rt.jar=51476:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_231\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_231\jre\lib\rt.jar;C:\Users\Shayesta\eclipse-workspace\Assignment2A\out\production\Assignment2A" RobotTest
+enter an even number greater than 2 for grid size
+16
+enter a boundary value
+4
+
+|1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00|
+|1.00| 50.00  4.55  2.38 |1.00| 1.61  1.22  0.98 |1.00| 0.82  0.70  0.62 |1.00| 0.55  0.50  0.45 
+|1.00| 0.41  0.38  0.35 |1.00| 0.33  0.31  0.29 |1.00| 0.28  0.26  0.25 |1.00| 0.24  0.23  0.22 
+|1.00| 0.21  0.20  0.19 |1.00| 0.18  0.18  0.17 |1.00| 0.17  0.16  0.16 |1.00| 0.15  0.15  0.14 
+|1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00|
+|1.00| 0.14  0.13  0.13 |1.00| 0.13  0.12  0.12 |1.00| 0.12  0.12  0.11 |1.00| 0.11  0.11  0.11 
+|1.00| 0.10  0.10  0.10 |1.00| 0.10  0.10  0.09 |1.00| 0.09  0.09  0.09 |1.00| 0.09  0.09  0.08 
+|1.00| 0.08  0.08  0.08 |1.00| 0.08  0.08  0.08 |1.00| 0.08  0.07  0.07 |1.00| 0.07  0.07  0.07 
+|1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00|
+|1.00| 0.07  0.07  0.07 |1.00| 0.07  0.07  0.06 |1.00| 0.06  0.06  0.06 |1.00| 0.06  0.06  0.06 
+|1.00| 0.06  0.06  0.06 |1.00| 0.06  0.06  0.06 |1.00| 0.06  0.05  0.05 |1.00| 0.05  0.05  0.05 
+|1.00| 0.05  0.05  0.05 |1.00| 0.05  0.05  0.05 |1.00| 0.05  0.05  0.05 |1.00| 0.05  0.05  0.05 
+|1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00||1.00|
+|1.00| 0.05  0.05  0.05 |1.00| 0.05  0.04  0.04 |1.00| 0.04  0.04  0.04 |1.00| 0.04  0.04  0.04 
+|1.00| 0.04  0.04  0.04 |1.00| 0.04  0.04  0.04 |1.00| 0.04  0.04  0.04 |1.00| 0.04  0.04  0.04 
+|1.00| 0.04  0.04  0.04 |1.00| 0.04  0.04  0.04 |1.00| 0.04  0.04  0.04 |1.00| 0.04  0.04  0.03 
+Name : robot 1 || Manufacturer:  NVIDIA || Weight: 2.00 kgs || XPosition: 10 moving at 180 degrees || YPosition: 8 moving at 90 degrees || speed:  5 meters/second || Engine Power Draw: 6.83 mA || Battery Capacity: 24.00 mA-Hour 
+the boundary transition happened at this point: 0 0   
+the boundary transition happened at this point: 0 1   
+the boundary transition happened at this point: 0 2   
+the boundary transition happened at this point: 0 3   
+the boundary transition happened at this point: 0 4   
+the boundary transition happened at this point: 0 5   
+the boundary transition happened at this point: 0 6   
+the boundary transition happened at this point: 0 7   
+the boundary transition happened at this point: 1 8   
+the boundary transition happened at this point: 2 8   
+the boundary transition happened at this point: 3 8   
+the boundary transition happened at this point: 4 8   
+the boundary transition happened at this point: 5 8   
+the boundary transition happened at this point: 6 8   
+the boundary transition happened at this point: 7 8   
+the boundary transition happened at this point: 8 8   
+the boundary transition happened at this point: 9 8   
+the boundary transition happened at this point: 10 8   
+
+Name : robot 2 || Manufacturer:  Intel || Weight: 2.50 kgs || XPosition: 9 moving at 180 degrees || YPosition: 9 moving at 90 degrees || speed: 10 meters/second || Engine Power Draw: 8.87 mA || Battery Capacity: 15.00 mA-Hour 
+the boundary transition happened at this point: 0 0   
+the boundary transition happened at this point: 1 0   
+the boundary transition happened at this point: 2 0   
+the boundary transition happened at this point: 3 0   
+the boundary transition happened at this point: 4 0   
+the boundary transition happened at this point: 5 0   
+the boundary transition happened at this point: 6 0   
+the boundary transition happened at this point: 7 0   
+the boundary transition happened at this point: 8 0   
+the boundary transition happened at this point: 9 4   
+the boundary transition happened at this point: 9 8   
+
+Name : robot 3 || Manufacturer:    AMD || Weight: 3.00 kgs || XPosition: 5 moving at 45 degrees || YPosition: 4 moving at 90 degrees || speed: 11 meters/second || Engine Power Draw: 6.62 mA || Battery Capacity: 18.20 mA-Hour 
+the boundary transition happened at this point: 0 0   
+the boundary transition happened at this point: 4 4   
+
+Name : robot 4 || Manufacturer:   fuji || Weight: 3.20 kgs || XPosition: 3 moving at 180 degrees || YPosition: 2 moving at 90 degrees || speed: 20 meters/second || Engine Power Draw: 7.82 mA || Battery Capacity: 14.00 mA-Hour 
+the boundary transition happened at this point: 0 0   
+the boundary transition happened at this point: 1 0   
+the boundary transition happened at this point: 2 0   
+
+Name : robot 5 || Manufacturer:  mitsubishi || Weight: 3.00 kgs || XPosition: 7 moving at 45 degrees || YPosition: 7 moving at 45 degrees || speed: 15 meters/second || Engine Power Draw: 10.48 mA || Battery Capacity: 17.00 mA-Hour 
+the boundary transition happened at this point: 0 0   
+the boundary transition happened at this point: 4 4   
+
+
+Process finished with exit code 0
