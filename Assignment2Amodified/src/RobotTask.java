@@ -52,11 +52,6 @@ public class RobotTask {
 
     public void setTime(String time) throws ParseException {
         this.time = time;
-//        String fmt ="HH:mm:ss";
-//        DateFormat df=new SimpleDateFormat(fmt);
-//        Date dt=df.parse(time);
-//        DateFormat tdf=new SimpleDateFormat("HH:mm:ss");
-        // timeFormat=LocalTime.parse(time);
         setTimeFormat(LocalTime.parse(time));
     }
 
@@ -105,8 +100,6 @@ public class RobotTask {
     }
 
     public String formattedString() {
-//        String date = String.format("%1$tm-%1$te-%1$ty", getDateFormat());
-//        String time = String.format("%1$tH:%1$tM:%1$ts", getTimeFormat());
         return String.format("Task ID: %1$d | Task Name: %2$7s, | Objective: %3$10s | start date: %4$s | start time: %5$s ", getID(), getTaskName(), getObjective(), getDate(), getTime());
     }
 

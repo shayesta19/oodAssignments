@@ -25,21 +25,20 @@ public class RobotScheduler {
         }
     }
 
-    public RobotTask getRobotTaskFromList(int robotID) {
-        RobotTask robotTask;
-        robotTask = taskList.get(robotID);
+    public RobotTask getRobotTaskFromList(RobotTask taskName) {
+        RobotTask robotTask=null;
+        int index=0;
+        for(RobotTask rt:taskList){
+            if(rt.getTaskName().equals(taskName.getTaskName()))
+            robotTask = taskList.get(index);
+            index++;
+        }
         return robotTask;
     }
 
     public ArrayList<RobotTask> getRobotTaskFromMap(int robotID){
      return tasksMap.get(robotID);
     }
-
-//    public List<RobotTask> getTasksList(Robot robotID) {
-//        if (tasksMap.get(robotID.getRobotID()) == null) {
-//            return null;
-//        } else
-//            return tasksMap.get(robotID.getRobotID());
 
     public ArrayList<RobotTask> getTaskList() {
         return taskList;
@@ -55,7 +54,6 @@ public class RobotScheduler {
                 }
             }
         }
-       // tasksMap.remove(taskList.get(robotID).getAssignedRobot().getRobotID());
     }
 
     public void displayListContents(ArrayList tasksList){
@@ -79,11 +77,6 @@ public class RobotScheduler {
         }
     }
 }
-//string format method for the classes.
+
 //test out all methods
 //good commenting
-//learn git branching and other stuff and a lot of stuff in java hashcode equals practice
-/*
- * test out remove method
- *variables should be named well
- */

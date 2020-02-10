@@ -34,7 +34,7 @@ public class robotTestingHashCodeandEquals {
         robotScheduler.deleteTask(4567, task5);
         System.out.println("////////displays robot tasks");
         robotScheduler.displayRobotandRobotTasks();
-        RobotTask task=robotScheduler.getRobotTaskFromList(4567);
+        RobotTask task=robotScheduler.getRobotTaskFromList(task3);
         System.out.println("/////////testing out getting robot from list");
         System.out.println(task);
         ArrayList<RobotTask> list = robotScheduler.getRobotTaskFromMap(1234);
