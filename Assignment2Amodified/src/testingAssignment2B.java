@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class robotTestingHashCodeandEquals {
+public class testingAssignment2B {
     public static void main(String[] args) {
         RobotScheduler robotScheduler = new RobotScheduler();
         String datetime = "11-12-2020 10:30";
@@ -26,19 +26,23 @@ public class robotTestingHashCodeandEquals {
         robotScheduler.addRobotTask(4567, task4);
         robotScheduler.addRobotTask(4567, task5);
         robotScheduler.addRobotTask(4567, task6);
-        robotScheduler.displayRobotandRobotTasks();
+        robotScheduler.displayRobotAndRobotTasks();
         System.out.println("////////////////////prints out the task list");
         robotScheduler.displayListContents(robotScheduler.getTaskList());
 
         System.out.println("///////deletes task 5 ");
         robotScheduler.deleteTask(4567, task5);
         System.out.println("////////displays robot tasks");
-        robotScheduler.displayRobotandRobotTasks();
-        RobotTask task=robotScheduler.getRobotTaskFromList(task3);
+        robotScheduler.displayRobotAndRobotTasks();
+        RobotTask task = robotScheduler.getRobotTaskFromList(task3);
         System.out.println("/////////testing out getting robot from list");
         System.out.println(task);
+        System.out.println("////////////////");
         ArrayList<RobotTask> list = robotScheduler.getRobotTaskFromMap(1234);
+        System.out.println("////////////////");
         System.out.println("/////testing out getting arraylist from map ");
         robotScheduler.displayListContents(list);
+        System.out.println("////////////////displaying the list and the map contents");
+        robotScheduler.displayRobotAndRobotTasks();
     }
 }

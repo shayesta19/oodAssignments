@@ -99,8 +99,11 @@ public class RobotTask {
         setDateFormat(dt);
     }
 
+    /**
+     * @return returns a formatted string of the major fields of the object
+     */
     public String formattedString() {
-        return String.format("Task ID: %1$d | Task Name: %2$7s, | Objective: %3$10s | start date: %4$s | start time: %5$s ", getID(), getTaskName(), getObjective(), getDate(), getTime());
+        return String.format("Task ID: %1$d | Task Name: %2$7s | Objective: %3$10s | start date: %4$s | start time: %5$s ", getID(), getTaskName(), getObjective(), getDate(), getTime());
     }
 
     @Override
