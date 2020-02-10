@@ -11,15 +11,15 @@ public class robotTestingHashCodeandEquals {
         Robot robot2=new Robot("robot 2",4567,"Intel",2.5,49.0,1.5,90,5,80,10,9,9);
 
 
-        RobotTask rt1 = new RobotTask(123, "run", formatDateTime, robot1, "to move to a location");
-        RobotTask rt2 = new RobotTask(123, "move", formatDateTime, robot1, "move to a different location");
-        RobotTask rt3 = new RobotTask(321, "talk", formatDateTime, robot2, "talks");
-        RobotTask rt4 = new RobotTask(321, "move", formatDateTime, robot1, "moves to a location");
+        RobotTask run = new RobotTask(123, "run", formatDateTime, robot1, "to move to a location");
+        RobotTask move = new RobotTask(123, "move", formatDateTime, robot1, "move to a different location");
+        RobotTask talk = new RobotTask(321, "talk", formatDateTime, robot2, "talks");
+        RobotTask move1 = new RobotTask(321, "move", formatDateTime, robot1, "moves to a location");
 
-        robotScheduler.addRobotTask(rt1);
-        robotScheduler.addRobotTask(rt2);
-        robotScheduler.addRobotTask(rt3);
-        robotScheduler.addRobotTask(rt4);
+        robotScheduler.addRobotTask(run,1234);
+        robotScheduler.addRobotTask(move,1234);
+        robotScheduler.addRobotTask(talk,4567);
+        robotScheduler.addRobotTask(move1,4567);
 
         robotScheduler.displayRobotandRobotTasks();
     }
