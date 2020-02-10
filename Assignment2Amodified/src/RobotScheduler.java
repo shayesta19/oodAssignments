@@ -25,25 +25,40 @@ public class RobotScheduler {
         }
     }
 
-    public RobotTask getRobotTask(int robotID) {
+    public RobotTask getRobotTaskFromList(int robotID) {
         RobotTask robotTask;
         robotTask = taskList.get(robotID);
         return robotTask;
     }
 
-    public List<RobotTask> getTasksList(Robot robotID) {
-        if (tasksMap.get(robotID.getRobotID()) == null) {
-            return null;
-        } else
-            return tasksMap.get(robotID.getRobotID());
+    public ArrayList<RobotTask> getRobotTaskFromMap(int robotID){
+     return tasksMap.get(robotID);
     }
 
-    public void deleteTask(int robotID) {
-        taskList.remove(robotID);
-        tasksMap.remove(taskList.get(robotID).getAssignedRobot().getRobotID());
+//    public List<RobotTask> getTasksList(Robot robotID) {
+//        if (tasksMap.get(robotID.getRobotID()) == null) {
+//            return null;
+//        } else
+//            return tasksMap.get(robotID.getRobotID());
+
+    public ArrayList<RobotTask> getTaskList() {
+        return taskList;
     }
 
-    public void displayListContents(){
+    public void deleteTask(int robotID,RobotTask task) {
+        //taskList.remove(robotID);
+        if(tasksMap.get(robotID).equals(robotID)){
+            ArrayList<RobotTask> list=tasksMap.get(robotID);
+            for(RobotTask rt:list) {
+                if (task.getTaskName().equals(rt.getTaskName())){
+                    list.remove(task);
+                }
+            }
+        }
+       // tasksMap.remove(taskList.get(robotID).getAssignedRobot().getRobotID());
+    }
+
+    public void displayListContents(ArrayList tasksList){
         int index=1;
         for(RobotTask rt:taskList){
             System.out.println(index+" "+rt);
