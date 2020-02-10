@@ -55,13 +55,12 @@ public class RobotTask {
         if (this == o) return true;
         if (!(o instanceof RobotTask)) return false;
         RobotTask robotTask = (RobotTask) o;
-        return getID() == robotTask.getID() &&
-                getAssignedRobot().equals(robotTask.getAssignedRobot());
+        return getAssignedRobot().equals(robotTask.getAssignedRobot());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getID(), getAssignedRobot());
+        return Objects.hash(getAssignedRobot());
     }
 
     public int getID() {

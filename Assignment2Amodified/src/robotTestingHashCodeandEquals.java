@@ -16,10 +16,10 @@ public class robotTestingHashCodeandEquals {
         RobotTask talk = new RobotTask(321, "talk", formatDateTime, robot2, "talks");
         RobotTask move1 = new RobotTask(321, "move", formatDateTime, robot1, "moves to a location");
 
-        robotScheduler.addRobotTask(run,1234);
-        robotScheduler.addRobotTask(move,1234);
-        robotScheduler.addRobotTask(talk,4567);
-        robotScheduler.addRobotTask(move1,4567);
+        robotScheduler.addRobotTask(run);
+        robotScheduler.addRobotTask(move);
+        robotScheduler.addRobotTask(talk);
+        robotScheduler.addRobotTask(move1);
 
         robotScheduler.displayRobotandRobotTasks();
     }

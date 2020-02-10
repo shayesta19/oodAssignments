@@ -11,13 +11,13 @@ public class RobotScheduler {
     }
 
 
-    public void addRobotTask(RobotTask task,int robotID) {
-        taskList.add(task);
-        if (robotID==task.getAssignedRobot().getRobotID()) {
+    public void addRobotTask(RobotTask task) {
+      //  taskList.add(task);
+        if (tasksMap.containsKey(task.getAssignedRobot().getRobotID())) {
             ArrayList<RobotTask> list = tasksMap.get(task.getAssignedRobot().getRobotID());
             list.add(task);
         } else {
-            tasksMap.put(robotID, taskList);
+            tasksMap.put(task.getAssignedRobot().getRobotID(), taskList);
         }
     }
 
