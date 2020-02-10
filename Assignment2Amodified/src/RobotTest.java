@@ -8,6 +8,10 @@ public class RobotTest {
 	static PrintWriter fileOutput;
 
 	public static void main(String[] args) {
+		run();
+	}
+
+	private static void run() {
 		Scanner in = new Scanner(System.in);
 		try {
 			fileOutput=new PrintWriter(new FileWriter("C:\\Users\\shayesta\\Desktop\\RobotAssignment2AOutput.txt"));
@@ -24,25 +28,14 @@ public class RobotTest {
 		int boundaryValue = in.nextInt();
 		g.setBoundaryValue(boundaryValue);
 		double[][] grid = g.createGrid();
-//		for(int i=0;i<grid.length;i++){
-//			double[] row=grid[i];
-//			for(double cel:row){
-//				System.out.print(String.format("%1.2f",cel)+" ");
-//				if(i%boundaryValue==0){
-//					System.out.println();
-//					continue;
-//				}
-//			}
-//			System.out.println();
-//		}
 		System.out.println();
 		fileOutput.println();
 		g.printGrid(grid);
-		Robot robot1=new Robot("robot 1","NVIDIA",2.0,51.8,1.2,82,10,50.0,5,10,8);
-		Robot robot2=new Robot("robot 2","Intel",2.5,49.0,1.5,90,5,80,10,9,9);
-		Robot robot3=new Robot("robot 3","AMD",3.0,40.0,1.3,95,7,92,11,5,4);
-		Robot robot4=new Robot("robot 4","fuji",3.2,49.0,1.4,85,5,60,20,3,2);
-		Robot robot5=new Robot("robot 5","mitsubishi",3.0,50.0,1.7,92,5,90,15,7,7);
+		Robot robot1=new Robot("robot 1",1234,"NVIDIA",2.0,51.8,1.2,82,10,50.0,5,10,8);
+		Robot robot2=new Robot("robot 2",4567,"Intel",2.5,49.0,1.5,90,5,80,10,9,9);
+		Robot robot3=new Robot("robot 3",7891,"AMD",3.0,40.0,1.3,95,7,92,11,5,4);
+		Robot robot4=new Robot("robot 4",4321,"fuji",3.2,49.0,1.4,85,5,60,20,3,2);
+		Robot robot5=new Robot("robot 5",1001,"mitsubishi",3.0,50.0,1.7,92,5,90,15,7,7);
 
 
 		//////robot 1///////////

@@ -3,6 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
 public class Robot {
@@ -28,8 +29,17 @@ public class Robot {
     private int efficiency; // set own efficiency values eg.82% etc.
     private Queue<String> boundaryTransition = new LinkedList<>();
     public PrintWriter fileOutput;
+    private int RobotID;
 
-    public Robot(String name, String manufacturer, double weight, double voltage, double current, int efficiency,
+    public int getRobotID() {
+        return RobotID;
+    }
+
+    public void setRobotID(int robotID) {
+        RobotID = robotID;
+    }
+
+    public Robot(String name, int robotID,String manufacturer, double weight, double voltage, double current, int efficiency,
                  int timeTakenToReach12Volts, double batteryCapacity, int speed, int XPosition, int YPosition) {
         try {
             fileOutput=new PrintWriter(new FileWriter("C:\\Users\\Shayesta\\Desktop\\RobotAssignment2AOutput.txt"));
@@ -46,6 +56,7 @@ public class Robot {
         this.XPosition = XPosition;
         this.YPosition = YPosition;
         this.speed = speed;
+        this.RobotID=robotID;
         this.batteryCapacity = batteryCapacity;
     }
 
@@ -127,6 +138,19 @@ public class Robot {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Robot)) return false;
+        Robot robot = (Robot) o;
+        return getRobotID() == robot.getRobotID();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getRobotID());
     }
 
     /**
@@ -275,7 +299,7 @@ public class Robot {
      * @return returns a formatted string of the major fields of the robot class
      */
     public String toFormattedString() {
-        return String.format("Name : %1$5s || Manufacturer:  %2$5s || Weight: %3$.2f kgs || XPosition: %4$1d moving at %5$2d degrees || YPosition: %6$1d moving at %7$2d degrees || speed: %8$2d meters/second || Engine Power Draw: %9$.2f mA || Battery Capacity: %10$.2f mA-Hour ", getName(), getManufacturer(), getWeight(), getXPositon(), getXdegrees(), getYPosition(), getYdegrees(), getSpeed(), getEnginePowerDraw(), getBatteryCapacity());
+        return String.format("Name : %1$5s || ID: %2$d || Manufacturer:  %3$5s || Weight: %4$.2f kgs || XPosition: %5$1d moving at %6$2d degrees || YPosition: %7$1d moving at %8$2d degrees || speed: %9$2d meters/second || Engine Power Draw: %10$.2f mA || Battery Capacity: %11$.2f mA-Hour ", getName(), getRobotID(),getManufacturer(), getWeight(), getXPositon(), getXdegrees(), getYPosition(), getYdegrees(), getSpeed(), getEnginePowerDraw(), getBatteryCapacity());
     }
 
     public void printBoundaryTransitions() {
