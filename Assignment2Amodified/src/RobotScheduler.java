@@ -20,6 +20,8 @@ public class RobotScheduler {
             list.add(task);
         } else {
             tasksMap.put(task.getAssignedRobot().getRobotID(), new ArrayList<RobotTask>());
+            ArrayList<RobotTask>list1=tasksMap.get(task.getAssignedRobot().getRobotID());
+            list1.add(task);
         }
     }
 
@@ -57,5 +59,6 @@ public class RobotScheduler {
 //string format method for the classes.
 //fix the hashcode and equals method
 //test out all methods
+//test out remove method
 //good commenting
 //learn git branching and other stuff and a lot of stuff in java hashcode equals practice
