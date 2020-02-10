@@ -43,6 +43,13 @@ public class RobotScheduler {
         tasksMap.remove(taskList.get(robotID).getAssignedRobot().getRobotID());
     }
 
+    public void displayListContents(){
+        int index=1;
+        for(RobotTask rt:taskList){
+            System.out.println(index+" "+rt);
+            index++;
+        }
+    }
     public void displayRobotandRobotTasks() {
         int index = 1;
         for (Map.Entry<Integer, ArrayList<RobotTask>> robotID : tasksMap.entrySet()) {
@@ -51,14 +58,17 @@ public class RobotScheduler {
             System.out.println(index + " " + key);
             for (RobotTask robotTask : value) {
                 System.out.println(robotTask);
+               // robotTask.formattedString();
             }
             index++;
         }
     }
 }
 //string format method for the classes.
-//fix the hashcode and equals method
 //test out all methods
-//test out remove method
 //good commenting
 //learn git branching and other stuff and a lot of stuff in java hashcode equals practice
+/*
+ * test out remove method
+ *variables should be named well
+ */
