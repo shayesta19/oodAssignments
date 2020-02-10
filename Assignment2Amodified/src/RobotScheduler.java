@@ -10,14 +10,16 @@ public class RobotScheduler {
         tasksMap = new HashMap<>();
     }
 
-
-    public void addRobotTask(RobotTask task) {
-      //  taskList.add(task);
-        if (tasksMap.containsKey(task.getAssignedRobot().getRobotID())) {
+    private boolean sameKeys(int ID){
+        return tasksMap.containsKey(ID);
+    }
+    public void addRobotTask(int robotID,RobotTask task) {
+        taskList.add(task);
+        if (sameKeys(robotID)) {
             ArrayList<RobotTask> list = tasksMap.get(task.getAssignedRobot().getRobotID());
             list.add(task);
         } else {
-            tasksMap.put(task.getAssignedRobot().getRobotID(), taskList);
+            tasksMap.put(task.getAssignedRobot().getRobotID(), new ArrayList<RobotTask>());
         }
     }
 
@@ -54,3 +56,6 @@ public class RobotScheduler {
 }
 //string format method for the classes.
 //fix the hashcode and equals method
+//test out all methods
+//good commenting
+//learn git branching and other stuff and a lot of stuff in java hashcode equals practice

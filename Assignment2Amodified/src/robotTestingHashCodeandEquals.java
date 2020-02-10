@@ -10,17 +10,21 @@ public class robotTestingHashCodeandEquals {
         Robot robot1=new Robot("robot 1",1234,"NVIDIA",2.0,51.8,1.2,82,10,50.0,5,10,8);
         Robot robot2=new Robot("robot 2",4567,"Intel",2.5,49.0,1.5,90,5,80,10,9,9);
 
+        RobotTask task1=new RobotTask(1,"task1",formatDateTime,robot1,"performs TASK1");
+        RobotTask task2=new RobotTask(2,"task2",formatDateTime,robot1,"performs TASK2");
+        RobotTask task3=new RobotTask(3,"task3",formatDateTime,robot1,"performs TASK3");
 
-        RobotTask run = new RobotTask(123, "run", formatDateTime, robot1, "to move to a location");
-        RobotTask move = new RobotTask(123, "move", formatDateTime, robot1, "move to a different location");
-        RobotTask talk = new RobotTask(321, "talk", formatDateTime, robot2, "talks");
-        RobotTask move1 = new RobotTask(321, "move", formatDateTime, robot1, "moves to a location");
+        RobotTask task4=new RobotTask(4,"task4",formatDateTime,robot2,"performs TASK4");
+        RobotTask task5=new RobotTask(5,"task5",formatDateTime,robot2,"performs TASK5");
+        RobotTask task6=new RobotTask(6,"task6",formatDateTime,robot2,"performs TASK6");
 
-        robotScheduler.addRobotTask(run);
-        robotScheduler.addRobotTask(move);
-        robotScheduler.addRobotTask(talk);
-        robotScheduler.addRobotTask(move1);
+       robotScheduler.addRobotTask(1234,task1);
+       robotScheduler.addRobotTask(1234,task2);
+       robotScheduler.addRobotTask(1234,task3);
 
+        robotScheduler.addRobotTask(4567,task4);
+        robotScheduler.addRobotTask(4567,task5);
+        robotScheduler.addRobotTask(4567,task6);
         robotScheduler.displayRobotandRobotTasks();
     }
 }
